@@ -1,16 +1,16 @@
 from django.shortcuts import render, redirect
-from .forms import box  # Assuming your form class is named 'box'
-from .mistrally import appy  # Import your AI model here
+from .forms import box  
+from .mistrally import appy  
 from langchain_core.messages import HumanMessage,AIMessage
 
 def home(request):
     global memory
-    # Initialize session storage for chat history
+   
     if 'chat_history' not in request.session:
         request.session['chat_history'] = []
 
-    # Set session expiry (optional)
-    request.session.set_expiry(3600)  # 1 hour
+    
+    request.session.set_expiry(3600)  
 
     form = box(request.POST or None)
 
@@ -20,16 +20,16 @@ def home(request):
         
         l=10 if len(memory)>10 else len(memory)
         print(l)
-        # Call your model and get AI response
+       
         response =appy(memory[:l])
         bot_response = response
         memory.append(AIMessage(content=bot_response))
-        # Append to session chat history
+       
         request.session['chat_history'].append({
             'user': user_input,
             'bot': bot_response
         })
-        request.session.modified = True  # Mark session as changed
+        request.session.modified = True  
 
         return redirect('chat')
 
