@@ -134,3 +134,6 @@ Google Search	Real-time college info lookups
 
 🧠 Persistent memory with LangGraph checkpoints
 this agent is loaded with least amount of data  because it is prototype if we finetune and promt instruction properly mean it defenetly use for student real world students who want to become engineer
+BY-
+Data collection,Django and process -Nithish
+model init ,prompt and workflow design -mohamed yasar arafath
